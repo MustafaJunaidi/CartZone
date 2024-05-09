@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="style/style.css" />
+      <link rel="stylesheet" href="style/style_admin.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <title>Online Shopping</title>
+   </head>
+   <body style="background-color: whitesmoke;">
+      <div class="suggestText">
+         Add Item
+      </div>
+      <div class="context">
+         <div class="contextOne">
+            <!-- <form class="formText" action="" method="post"> -->
+            <form class="formMain" action="PHP/add_new_item.php" method="POST" enctype="multipart/form-data">
+               <label for="item_name">Name Item</label>
+               <input type="text" name="item_name" id="item_name" required>
+               <label for="item_price">Price Item</label>
+               <input type="number" name="item_price" min="0" step="any" id="item_price" required>
+               <label for="item_description">Item Description</label>
+               <input type="text" name="item_description" id="item_description" required>
+               <label for="item_quantity">Item Quantity</label>
+               <input type="number" min="1" step="any" name="item_quantity" id="item_quantity" required>
+               <label for="item_category">Select Item Category</label>
+               <select id="item_category" name="item_category">
+                  <option value="Electronic">Electronics</option>
+                  <option value="Clothing">Clothing and Apparel</option>
+                  <option value="Groceries">Groceries and Food</option>
+               </select>
+               <input type="submit" value="Add item">
+         </div>
+         <!-- form image -->
+         <div class="contextTwo">
+         <label for="file-upload" class="file-upload-label">Choose an image:</label>
+         <div class="file-upload-display">
+         <img id="preview-image" src="#" alt="Preview" />
+         </div>
+         <input type="file" id="file-upload" name="image" accept="image/*" onchange="previewImage(event)" required>
+         <br>
+         <label for="file-upload" class="file-upload">Browse</label>
+         </div>
+         </form>
+      </div>
+      <script>
+         function previewImage(event) {
+           var reader = new FileReader();
+           var image = document.getElementById('preview-image');
+           reader.onload = function () {
+             if (reader.readyState == 2) {
+               image.src = reader.result;
+             }
+           }
+           reader.readAsDataURL(event.target.files[0]);
+         }
+      </script>
+   </body>
+</html>
